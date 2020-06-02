@@ -79,10 +79,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/ionic-native.git"
+    "url": "git+https://github.com/binaryops-wiebo/ionic-msal-native.git"
   },
   "bugs": {
-    "url": "https://github.com/ionic-team/ionic-native/issues"
+    "url": "https://github.com/binaryops-wiebo/ionic-msal-native/issues"
   },
   "config": {
     "commitizen": {
