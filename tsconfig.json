@@ -16,7 +16,8 @@
     "inlineSources": true,
     "inlineSourceMap": true
   },
-  "include": ["src/ionic-msal-native/plugins/**/*.ts"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts"],
   "angularCompilerOptions": {
     "genDir": "aot"
   },

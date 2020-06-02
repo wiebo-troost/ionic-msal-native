@@ -2,26 +2,18 @@
   "name": "ionic-msal-native",
   "np": {
     "yarn": false,
-    "contents": "dist"
+    "contents": "dist/ionic-msal-native"
 },
   "version": "0.0.1",
-  "description": "Native plugin wrappers for Cordova MSAL",
+  "description": "Native plugin wrapper for Cordova MSAL",
   "author": "Wiebo Troost <wiebo@binaryops.ca> (https://binaryops.ca)",
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch",
-    "build:esm": "ts-node -P scripts/tsconfig.json scripts/tasks/build-esm",
-    "build:es5": "ts-node -P scripts/tsconfig.json scripts/tasks/build-es5",
-    "build:ngx": "ts-node -P scripts/tsconfig.json scripts/tasks/build-ngx",
-    "build": "npm run build:esm && npm run build:ngx && npm run build:es5",
     "prebuild": "rimraf -rf dist",
     "lint": "gulp lint",
-    "readmes": "gulp readmes",
-    "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-    "shipit": "npm run build && npm run readmes && npm run npmpub",
-    "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
+    "copyPackageJson":"gulp copyPackageJson",
+    "build":"tsc && npm run copyPackageJson",
     "deploy":"np"  
   },
   "devDependencies": {
