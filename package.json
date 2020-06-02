@@ -3,8 +3,8 @@
   "np": {
     "yarn": false,
     "contents": "dist"
-},
-  "version": "0.0.2",
+  },
+  "version": "0.0.3",
   "description": "Native plugin wrapper for Cordova MSAL",
   "author": "Wiebo Troost <wiebo@binaryops.ca> (https://binaryops.ca)",
   "license": "MIT",
@@ -12,9 +12,9 @@
     "test": "jest",
     "prebuild": "rimraf -rf dist",
     "lint": "gulp lint",
-    "copyPackageJson":"gulp copyPackageJson",
-    "build":"tsc && npm run copyPackageJson",
-    "deploy":"np"  
+    "copyPackageJson": "gulp copyPackageJson",
+    "build": "tsc && npm run copyPackageJson",
+    "deploy": "np"
   },
   "devDependencies": {
     "@angular/common": "^9.1.7",
