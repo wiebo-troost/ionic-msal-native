@@ -2,7 +2,7 @@
   "name": "ionic-msal-native",
   "np": {
     "yarn": false,
-    "contents": "dist/ionic-msal-native"
+    "contents": "dist"
 },
   "version": "0.0.1",
   "description": "Native plugin wrapper for Cordova MSAL",
