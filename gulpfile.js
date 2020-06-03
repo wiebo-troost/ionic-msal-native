@@ -30,3 +30,7 @@ gulp.task('lint', () => {
 gulp.task('copyPackageJson', () => {
   return gulp.src('./package.json').pipe(gulp.dest('./dist/'));
 });
+
+gulp.task('copyReadme', () => {
+  return gulp.src('./README.md').pipe(gulp.dest('./dist/'));
+});

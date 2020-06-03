@@ -12,9 +12,9 @@
     "test": "jest",
     "prebuild": "rimraf -rf dist",
     "lint": "gulp lint",
-    "copyPackageJson": "gulp copyPackageJson",
+    "copyPackageFiles": "gulp copyPackageJson && gulp copyReadme",
     "postversion": "npm run build",
-    "build": "tsc && npm run copyPackageJson",
+    "build": "tsc && npm run copyPackageFiles",
     "deploy": "np"
   },
   "devDependencies": {
