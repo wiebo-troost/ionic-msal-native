@@ -4,7 +4,7 @@
     "yarn": false,
     "contents": "dist"
   },
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Native plugin wrapper for Cordova MSAL",
   "author": "Wiebo Troost <wiebo@binaryops.ca> (https://binaryops.ca)",
   "license": "MIT",
