@@ -33,7 +33,7 @@ NgModule({
 ```
 
 ```
-// Msal is injected into the component or servive
+// Msal is injected into the component or service
 constructor(private msal: Msal) { }
 ```
 
@@ -72,4 +72,29 @@ Please refer to the [Microsoft's Msal documentation](https://docs.microsoft.com/
 
 # Full API
 
-coming soon....
+```
+interface MsalLogEntry {
+    timestamp: string;
+    threadId: number;
+    correlationId: string;
+    logLevel: string;
+    containsPII: boolean;
+    message: string;
+}
+
+enum MsalLogLevel {
+    Verbose = "VERBOSE",
+    Error = "ERROR",
+    Warning = "WARNING",
+    Info = "INFO"
+}
+
+class Msal {
+    msalInit(config: any): Promise<any>;
+    signInInteractive(options?: any): Promise<any>;
+    signInSilent(accountId?: string): Promise<any>;
+    signOut(accountId?: string): Promise<any>;
+    getAccounts(): Promise<any[]>;
+    startLogger(logLevel: MsalLogLevel): Observable<MsalLogEntry>;
+}
+```

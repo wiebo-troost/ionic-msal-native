@@ -1,15 +1,23 @@
-/**
- * This is a template for new plugin wrappers
- *
- * TODO:
- * - Add/Change information below
- * - Document usage (importing, executing main functionality)
- * - Remove any imports that you are not using
- * - Remove all the comments included in this template, EXCEPT the @Plugin wrapper docs and any other docs you added
- * - Remove this note
- *
- */
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+declare const cordova: any;
+
+export interface MsalLogEntry {
+  timestamp: string;
+  threadId: number;
+  correlationId: string;
+  logLevel: string;
+  containsPII: boolean;
+  message: string;
+}
+
+export enum MsalLogLevel {
+  Verbose = 'VERBOSE',
+  Error = 'ERROR',
+  Warning = 'WARNING',
+  Info = 'INFO',
+}
 
 /**
  * @name msal
@@ -17,32 +25,26 @@ import { Injectable } from '@angular/core';
  * This plugin works with cordova-plugin-msal
  *
  * @usage
- * ```typescript
- * import { msal } from 'ionic-msal-native/ngx';
- *
- *
- * constructor(private msal: msal) { }
- *
+ * ...
+ * import { Msal } from 'ionic-msal-native';
  * ...
  *
  *
- * this.msal.functionName('Hello', 123)
- *   .then((res: any) => console.log(res))
- *   .catch((error: any) => console.error(error));
+ * ...
+ * NgModule({
+ *  imports: [
+ *  ...
+ *   ],
+ *   providers:[Msal, ...]
+ * })
  *
- * ```
+ * import { Msal } from 'ionic-msal-native';
+ *
+ * constructor(private msal: Msal) { }
+ *
  */
-
-declare const cordova: any;
-
 @Injectable()
 export class Msal {
-  /**
-   * This function does something
-   * @param config {object} Some param to configure something
-   * @return {Promise<any>} Returns a promise that resolves when something happens
-   */
-
   msalInit(config: any): Promise<any> {
     return new Promise((resolve, reject) => {
       if (!cordova) {
@@ -69,7 +71,7 @@ export class Msal {
       if (!cordova) {
         return reject('Cordova not available');
       }
-      var msalLocal = cordova.plugins['msalPlugin'];
+      const msalLocal = cordova.plugins['msalPlugin'];
       if (!msalLocal) {
         return reject('please install cordova-plugin-msal');
       }
@@ -90,7 +92,7 @@ export class Msal {
       if (!cordova) {
         return reject('Cordova not available');
       }
-      var msalLocal = cordova.plugins['msalPlugin'];
+      const msalLocal = cordova.plugins['msalPlugin'];
       if (!msalLocal) {
         return reject('please install cordova-plugin-msal');
       }
@@ -111,7 +113,7 @@ export class Msal {
       if (!cordova) {
         return reject('Cordova not available');
       }
-      var msalLocal = cordova.plugins['msalPlugin'];
+      const msalLocal = cordova.plugins['msalPlugin'];
       if (!msalLocal) {
         return reject('please install cordova-plugin-msal');
       }
@@ -123,6 +125,49 @@ export class Msal {
           reject(err);
         },
         accountId
+      );
+    });
+  }
+
+  getAccounts(): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      if (!cordova) {
+        return reject('Cordova not available');
+      }
+      const msalLocal = cordova.plugins['msalPlugin'];
+      if (!msalLocal) {
+        return reject('please install cordova-plugin-msal');
+      }
+      msalLocal.getAccounts(
+        (accounts: any[]) => {
+          resolve(accounts);
+        },
+        (err: any) => {
+          reject(err);
+        }
+      );
+    });
+  }
+
+  startLogger(logLevel: MsalLogLevel): Observable<MsalLogEntry> {
+    return new Observable(observer => {
+      if (!cordova) {
+        return observer.error('Cordova not available');
+      }
+      const msalLocal = cordova.plugins['msalPlugin'];
+      if (!msalLocal) {
+        return observer.error('please install cordova-plugin-msal');
+      }
+
+      msalLocal.startLogger(
+        (entry: MsalLogEntry) => {
+          observer.next(entry);
+        },
+        (error: any) => {
+          observer.error(error);
+        },
+        false,
+        logLevel
       );
     });
   }
