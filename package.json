@@ -21,7 +21,7 @@
     "@angular/common": "^9.1.7",
     "@angular/compiler": "^9.1.7",
     "@angular/compiler-cli": "^9.1.7",
-    "@angular/core": "^9.1.7",
+    "@angular/core": "^11.0.5",
     "@ionic-native/core": "^5.26.0",
     "@types/cordova": "0.0.34",
     "@types/fs-extra": "^9.0.1",
